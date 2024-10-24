@@ -1,0 +1,215 @@
+﻿@model IEnumerable<FPT_JobMatch.Models.Employer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <style>
+        .main-content {
+            padding: 20px;
+        }
+
+        .card {
+        margin-bottom: 20px;
+        transition: transform 0.2s; /* Hiệu ứng chuyển động */
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+    .card:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm bóng */
+    }
+
+    .btn-custom {
+        padding: 12px; /* Adjusted padding */
+        font-size: 14px; /* Font size */
+        width: 99px; /* Fixed width for buttons */
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        margin-bottom: 10px;
+    }
+
+    .btn-create {
+        width: fit-content;
+    }
+
+    .btn-primary.btn-custom:hover {
+        background-color: #0056b3;
+    }
+
+        .statistics-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: #0d6efd;
+        }
+
+        .recent-applications table {
+            width: 100%;
+        }
+
+            .recent-applications table th, .recent-applications table td {
+                padding: 18px;
+                text-align: center;
+            }
+
+            .recent-applications table th {
+                background-color: #343a40;
+                color: white;
+            }
+
+            .recent-applications table td {
+                background-color: #f8f9fa;
+            }
+
+    </style>
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("Employer"))
+{
+    <!-- Sidebar -->
+    <div class="d-flex">
+        <!-- Main Content -->
+        <div class="main-content flex-grow-1">
+
+            <!-- Dashboard Statistics -->
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <h5 class="card-title">Active Jobs</h5>
+                                <p class="statistics-number">5</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <h5 class="card-title">Pending Applications</h5>
+                                <p class="statistics-number">12</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <h5 class="card-title">Total Hires</h5>
+                                <p class="statistics-number">3</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Applications -->
+            <div class="container mt-4 recent-applications">
+                <h5>Recent Applications</h5>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Applicant Name</th>
+                            <th>Job Title</th>
+                            <th>Date Applied</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John Doe</td>
+                            <td>Web Developer</td>
+                            <td>20/10/2024</td>
+                            <td>Pending</td>
+                            <td><button class="btn btn-primary">View</button></td>
+                        </tr>
+                        <tr>
+                            <td>Jane Smith</td>
+                            <td>Graphic Designer</td>
+                            <td>19/10/2024</td>
+                            <td>Interview Scheduled</td>
+                            <td><button class="btn btn-primary">View</button></td>
+                        </tr>
+                        <tr>
+                            <td>David Brown</td>
+                            <td>Project Manager</td>
+                            <td>18/10/2024</td>
+                            <td>Rejected</td>
+                            <td><button class="btn btn-primary">View</button></td>
+                        </tr>
+                        <tr>
+                            <td>David Brown</td>
+                            <td>Project Manager</td>
+                            <td>18/10/2024</td>
+                            <td>Accept</td>
+                            <td><button class="btn btn-primary">View</button></td>
+                        </tr>
+
+                        <tr>
+                            <td>David Brown</td>
+                            <td>Front-End JS</td>
+                            <td>18/10/2024</td>
+                            <td>Rejected</td>
+                            <td><button class="btn btn-primary">View</button></td>
+                        </tr>
+
+                        <tr>
+                            <td>David Brown</td>
+                            <td>Project Manager</td>
+                            <td>19/10/2024</td>
+                            <td>Accept</td>
+                            <td><button class="btn btn-primary">View</button></td>
+                        </tr>
+
+                        <tr>
+                            <td>David Brown</td>
+                            <td>Back-End Java</td>
+                            <td>20/10/2024</td>
+                            <td>Accept</td>
+                            <td><button class="btn btn-primary">View</button></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <h1 class="text-center my-4 mb-5 mt-5">List of Employers</h1>
+    <p class="text-right">
+        <a class="btn btn-primary btn-custom btn-create" asp-action="Create">Add New Employer</a>
+    </p>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-truncate" title="@Html.DisplayNameFor(model => model.Name)">@Html.DisplayFor(modelItem => item.Name)</h5>
+                        <p class="card-text">Company Name: @Html.DisplayFor(modelItem => item.CompanyName)</p>
+                        <p class="card-text">Age: @Html.DisplayFor(modelItem => item.Age)</p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-custom">
+                            <i class="fas fa-info-circle"></i> Details
+                        </a>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-custom">
+                            <i class="fas fa-edit"></i> Edit
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-custom">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+
+
+

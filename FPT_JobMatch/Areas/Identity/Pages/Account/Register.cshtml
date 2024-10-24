@@ -1,0 +1,239 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+<div class="main">
+    <!-- Sign up form -->
+    <section class="signup">
+        <div class="container">
+            <div class="signup-content">
+                <div class="signup-form">
+                    <h2 class="form-title">Register</h2>
+                    <form method="POST" class="register-form" id="register-form">
+                        <div class="form-group">
+                            <label asp-for="Input.Email" class="form-label"><i class="zmdi zmdi-email"></i></label>
+                            <input asp-for="Input.Email" class="form-control" placeholder="Your Email" required>
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Input.Password" class="form-label"><i class="zmdi zmdi-lock"></i></label>
+                            <input asp-for="Input.Password" class="form-control" placeholder="Password" required>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Input.ConfirmPassword" class="form-label"><i class="zmdi zmdi-lock-outline"></i></label>
+                            <input asp-for="Input.ConfirmPassword" type="password" class="form-control" placeholder="Confirm your password" required>
+                        </div>
+                        <div class="form-group role-selection">
+                            <label class="form-label">Choose a role</label>
+                            <div class="role-options">
+                                <label>
+                                    <input type="radio" asp-for="Input.Role" value="Employer" />
+                                    <span>Employer</span>
+                                </label>
+                                <label>
+                                    <input type="radio" asp-for="Input.Role" value="User" />
+                                    <span>User</span>
+                                </label>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group form-button">
+                            <input type="submit" class="btn btn-primary" value="Register">
+                        </div>
+                    </form>
+                </div>
+                <div class="signup-image">
+                    <figure>
+                        <img src="https://inkythuatso.com/uploads/thumbnails/800/2021/11/logo-fpt-inkythuatso-1-01-01-14-33-35.jpg" alt="Sign up image">
+                    </figure>
+                    <a asp-page="./Login" class="signup-image-link">I am already a member</a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+    body {
+        font-family: "Poppins", sans-serif;
+        background: #f8f8f8;
+    }
+
+    .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 850px;
+    }
+
+    .signup {
+        width: 90%;
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: row; /* Display children in a row */
+        overflow: hidden; /* Prevent overflow */
+        padding: 75px 0;
+    }
+
+    .signup-content {
+        display: flex;
+        flex: 1; /* Allow content to take available space */
+    }
+
+    .signup-form {
+        padding: 30px; /* Padding for the form area */
+        flex: 1; /* Allow the form to take available space */
+    }
+
+        .signup-form input {
+            border: none; /* Bỏ viền cho tất cả các trường input */
+            outline: none; /* Ẩn viền mặc định khi focus */
+            padding: 12px; /* Thêm padding cho các trường input */
+            border-bottom: 2px solid #0072ff; /* Thêm viền dưới để tạo điểm nhấn */
+        }
+
+    .form-title {
+        margin-bottom: 50px;
+        font-weight: 600;
+        color: #222222;
+        text-align: center;
+        transform: translateY(-25px);
+    }
+
+    .form-group {
+        margin-bottom: 30px; /* Space between form groups */
+        display: flex; /* Sử dụng flexbox cho nhóm form */
+        align-items: center; /* Căn giữa các phần tử theo chiều dọc */
+    }
+
+    .agree-term {
+        margin-right: 10px; /* Space between checkbox and label */
+        transform: translateY(-1px);
+    }
+
+    .label-agree-term {
+        font-weight: 400; /* Regular font weight for agreement */
+        margin: 0; /* Bỏ margin mặc định của nhãn */
+    }
+
+    .form-label {
+        font-weight: 500;
+        color: #333;
+    }
+
+    .form-control {
+        border: 2px solid #0072ff;
+        border-radius: 5px;
+        padding: 12px;
+        transition: border-color 0.3s, box-shadow 0.3s;
+        width: 100%; /* Full width */
+    }
+
+        .form-control:focus {
+            border-color: #00c6ff;
+            box-shadow: 0 0 5px rgba(0, 198, 255, 0.5);
+            outline: none; /* Hide default focus outline */
+        }
+
+    .signup-image {
+        flex: 1; /* Allow the image to take available space */
+        display: flex;
+        flex-direction: column; /* Đặt chiều hướng thành cột để các phần tử nằm trên nhau */
+        justify-content: center; /* Center the content vertically */
+        align-items: center; /* Center the content horizontally */
+        text-align: center;
+        transform: translateY(-35px);
+    }
+
+        .signup-image img {
+            max-width: 100%; /* Responsive image */
+            height: 100%; /* Maintain aspect ratio */
+            margin-bottom: 10px; /* Khoảng cách giữa ảnh và thẻ a */
+        }
+
+    .signup-image-link {
+        display: block;
+        text-decoration: underline;
+        color: black;
+    }
+
+    .role-selection {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 30px; /* Khoảng cách dưới cùng */
+    }
+
+        .role-selection .form-label {
+            font-weight: 600; /* Chữ đậm */
+            margin-bottom: 15px; /* Khoảng cách giữa nhãn và các lựa chọn */
+            color: #444; /* Màu chữ */
+            font-size: 18px; /* Kích thước chữ */
+        }
+
+    .role-options {
+        display: flex; /* Sử dụng flexbox cho lựa chọn vai trò */
+        gap: 30px; /* Khoảng cách giữa các lựa chọn */
+    }
+
+        .role-options label {
+            display: flex; /* Đặt label thành flex để có thể căn giữa */
+            align-items: center; /* Căn giữa theo chiều dọc */
+            cursor: pointer; /* Hiển thị con trỏ khi di chuột vào label */
+            background-color: #f0f0f0; /* Màu nền nhạt cho các lựa chọn */
+            border-radius: 8px; /* Bo góc */
+            padding: 10px 15px; /* Padding cho các lựa chọn */
+            transition: background-color 0.3s ease, transform 0.2s ease; /* Hiệu ứng chuyển đổi */
+        }
+
+            .role-options label:hover {
+                background-color: #0072ff; /* Màu nền khi hover */
+                color: white; /* Màu chữ khi hover */
+                transform: scale(1.05); /* Phóng to nhẹ khi hover */
+            }
+
+        .role-options input[type="radio"] {
+            display: none; /* Ẩn nút radio mặc định */
+        }
+
+            .role-options input[type="radio"] + span {
+                position: relative; /* Để tạo hiệu ứng cho dấu tích */
+                padding-left: 30px; /* Khoảng cách cho dấu tích */
+            }
+
+                .role-options input[type="radio"] + span:before {
+                    content: ''; /* Tạo nội dung giả cho dấu tích */
+                    position: absolute; /* Đặt dấu tích tuyệt đối */
+                    left: 0;
+                    top: 50%;
+                    transform: translateY(-50%); /* Căn giữa dấu tích */
+                    width: 20px; /* Kích thước của dấu tích */
+                    height: 20px; /* Kích thước của dấu tích */
+                    border: 2px solid #0072ff; /* Viền cho dấu tích */
+                    border-radius: 50%; /* Bo tròn */
+                    background: white; /* Màu nền trắng cho dấu tích */
+                    transition: background 0.3s ease; /* Hiệu ứng chuyển đổi */
+                }
+
+            .role-options input[type="radio"]:checked + span:before {
+                background: #0072ff; /* Màu nền khi chọn */
+            }
+
+            .role-options input[type="radio"]:checked + span:after {
+                content: ''; /* Tạo dấu tích */
+                position: absolute; /* Đặt dấu tích tuyệt đối */
+                left: 5px; /* Vị trí bên trái */
+                top: 50%; /* Căn giữa theo chiều dọc */
+                width: 8px; /* Chiều rộng của dấu tích */
+                height: 2px; /* Chiều cao của dấu tích */
+            }
+
+</style>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

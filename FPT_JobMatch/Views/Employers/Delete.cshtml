@@ -1,0 +1,98 @@
+﻿@model FPT_JobMatch.Models.Employer
+
+@{
+    ViewData["Title"] = "Delete Employer";
+}
+
+<div class="container mt-5 mb-5">
+    <h1 class="text-center mb-4 text-danger">Delete Employer</h1>
+    <hr />
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+             <div class="bg-light p-4 rounded shadow-sm">
+                <dl class="row">
+
+                <dt class="col-sm-4 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                        <dt class="col-sm-4 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.CompanyName)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.CompanyName)
+                </dd>
+                        <dt class="col-sm-4 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.Age)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Age)
+                </dd>
+            </dl>
+                    <div class="text-center mt-4">
+                        <form asp-action="Delete">
+                            <input type="hidden" asp-for="Id" />
+                            <button type="submit" class="btn btn-danger btn-custom" onclick="return confirm('Are you sure you want to delete this job?');">
+                                <i class="fas fa-trash-alt"></i> Delete
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary btn-custom">
+                                <i class="fas fa-arrow-left"></i> Back to List
+                            </a>
+                        </form>
+                    </div>
+        </div>
+    </div>
+</div>
+
+<style>
+        .form-control {
+            transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+        }
+
+            .form-control:focus {
+                border-color: #0056b3; /* Border color on focus */
+                box-shadow: 0 0 5px rgba(0, 86, 179, 0.5); /* Shadow on focus */
+            }
+
+        /* Button styling */
+        .btn-custom {
+            padding: 15px; /* Adjusted padding */
+            font-size: 14px; /* Font size */
+            width: 150px; /* Fixed width for buttons */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+
+        .btn-primary.btn-custom:hover {
+            background-color: #0056b3; /* Darker blue */
+        }
+
+        .btn-secondary.btn-custom:hover {
+            background-color: #6c757d; /* Darker grey */
+        }
+
+        /* Card styling */
+        .bg-light {
+            background-color: #ffffff !important; /* Light background for form */
+            border: 1px solid #e0e0e0; /* Subtle border */
+        }
+
+        /* Shadow effect */
+        .shadow-sm {
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; /* Light shadow for depth */
+        }
+
+        /* Rounded corners */
+        .rounded {
+            border-radius: 0.25rem !important; /* Rounded corners for form */
+        }
+        dl.row dt, dl.row dd {
+            margin-bottom: 30px; /* Add margin between elements */
+        }
+        .rounded {
+            border-radius: 0.25rem;
+        }
+    </style>
+</style>

@@ -1,0 +1,110 @@
+﻿@model FPT_JobMatch.Models.Application
+
+@{
+    ViewData["Title"] = "Edit Application";
+}
+
+<div class="container mt-5 mb-5">
+    <h1 class="text-center">Application Details</h1>
+    <hr />
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form asp-action="Edit" class="bg-light p-4 rounded shadow-sm">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+
+                <input type="hidden" asp-for="Id" />
+
+                <div class="form-group">
+                    <label asp-for="ApplicationLatter" class="control-label font-weight-bold"></label>
+                    <input asp-for="ApplicationLatter" class="form-control" placeholder="Enter your application letter..." />
+                    <span asp-validation-for="ApplicationLatter" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ApplicationDate" class="control-label font-weight-bold"></label>
+                    <input asp-for="ApplicationDate" class="form-control" type="date" />
+                    <span asp-validation-for="ApplicationDate" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="JobSeekerId" class="control-label font-weight-bold"></label>
+                    <select asp-for="JobSeekerId" class="form-control" asp-items="ViewBag.JobSeekerId">
+                    </select>
+                    <span asp-validation-for="JobSeekerId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="JobId" class="control-label font-weight-bold"></label>
+                    <select asp-for="JobId" class="form-control" asp-items="ViewBag.JobId">
+                    </select>
+                    <span asp-validation-for="JobId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group text-center">
+                    <input type="submit" value="Save Changes" class="btn btn-primary btn-custom btn-lg" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a asp-action="Index" class="btn btn-secondary btn-custom">
+            <i class="fas fa-arrow-left"></i> Back to List
+        </a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<style>
+    /* Form styling */
+    .form-control {
+        transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    }
+
+        .form-control:focus {
+            border-color: #0056b3; /* Border color on focus */
+            box-shadow: 0 0 5px rgba(0, 86, 179, 0.5); /* Shadow on focus */
+        }
+
+    /* Button styling */
+    .btn-custom {
+        padding: 15px; /* Adjusted padding */
+        font-size: 14px; /* Font size */
+        width: 150px; /* Fixed width for buttons */
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        margin-right: 10px; /* Spacing between buttons */
+    }
+
+    .btn-primary {
+        transform: translateY(10px);
+    }
+
+        .btn-primary.btn-custom:hover {
+            background-color: #0056b3; /* Darker blue */
+        }
+
+    .btn-secondary.btn-custom:hover {
+        background-color: #6c757d; /* Darker grey */
+    }
+
+    /* Card styling */
+    .bg-light {
+        background-color: #ffffff !important; /* Light background for form */
+        border: 1px solid #e0e0e0; /* Subtle border */
+    }
+
+    /* Shadow effect */
+    .shadow-sm {
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; /* Light shadow for depth */
+    }
+
+    /* Rounded corners */
+    .rounded {
+        border-radius: 0.25rem !important; /* Rounded corners for form */
+    }
+</style>

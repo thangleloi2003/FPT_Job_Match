@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FPT_JobMatch", "FPT_JobMatch\FPT_JobMatch.csproj", "{3BF2984D-BC49-4F8A-BCD7-05B10E54E87C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3BF2984D-BC49-4F8A-BCD7-05B10E54E87C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BF2984D-BC49-4F8A-BCD7-05B10E54E87C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BF2984D-BC49-4F8A-BCD7-05B10E54E87C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BF2984D-BC49-4F8A-BCD7-05B10E54E87C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A618079E-E29C-4D4C-BF0F-E55683956341}
+	EndGlobalSection
+EndGlobal

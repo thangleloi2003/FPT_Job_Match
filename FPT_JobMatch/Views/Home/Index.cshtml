@@ -1,0 +1,175 @@
+﻿@model IEnumerable<FPT_JobMatch.Models.Job>
+@{
+    ViewData["Title"] = "Home Page";
+}
+@* Style for User Page *@
+<style>
+    .featured-job-area {
+        padding-top: 100px !important;
+        padding-bottom: 100px !important;
+    }
+
+    .section-title span {
+        color: #6c757d;
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        display: block;
+        margin-bottom: 28px;
+    }
+
+    .section-title h2 {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 95px;
+        color: #28395a;
+    }
+
+    .video-section {
+        margin-top: 40px;
+    }
+
+    iframe {
+        margin: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    /* Job Card Styles */
+    .job-card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+        transition: all 0.3s ease;
+        padding: 20px;
+    }
+
+        .job-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .job-card img {
+            max-width: 70px;
+            height: auto;
+            border-radius: 10px;
+            margin-right: 15px;
+        }
+
+        .job-card .card-body {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .job-card .card-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .job-card .card-text {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .job-card .description {
+            margin-top: 10px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .job-card .salary {
+            font-weight: bold;
+            color: #007bff;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .job-card .posted-date {
+            font-size: 12px;
+            font-style: italic;
+            color: #6c757d;
+        }
+
+    /* Action Buttons */
+    .action-buttons a {
+        font-size: 14px;
+        padding: 8px 15px;
+        border-radius: 30px;
+        transition: background-color 0.3s;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+        color: #fff;
+    }
+
+        .btn-info:hover {
+            background-color: #138496;
+            border-color: #138496;
+        }
+    }
+</style>
+
+@if (!User.Identity.IsAuthenticated || User.IsInRole("User"))
+{
+    <section class="video-section py-2">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <h2 class="text-center mb-5">Introduction About FPTJobMatch</h2>
+                    <div class="d-flex justify-content-center flex-wrap">
+                        <iframe width="500" height="300" src="https://www.youtube.com/embed/hvwnN1jDEjY?si=m1kOYhlg737Mo6lA"
+                                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="500" height="300" src="https://www.youtube.com/embed/OUQcfdJs3bI?si=SFLlMxGa-mGPy2s6"
+                                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="500" height="300" src="https://www.youtube.com/embed/x-94FJKee8A?si=tGe5-K67p0aoeABs"
+                                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-job-area feature-padding py-5">
+        <div class="container">
+            <!-- Section Title -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title text-center mb-4">
+                        <span class="text-muted">Recent Job</span>
+                        <h2>Featured Jobs</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-4 mb-4">
+                            <div class="job-card shadow-sm">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center">
+                                        <img src="@Html.DisplayFor(modelItem => item.Image)" alt="Job Image" class="img-fluid" />
+                                        <h5 class="card-title ml-3">@Html.DisplayFor(modelItem => item.Title)</h5>
+                                    </div>
+                                    <p class="card-text description">@Html.DisplayFor(modelItem => item.Description)</p>
+                                    <p class="card-text salary">Salary: $@Html.DisplayFor(modelItem => item.Salary)</p>
+                                    <p class="card-text posted-date">Posted Date: @Html.DisplayFor(modelItem => item.PostedDate)</p>
+                                    <div class="action-buttons">
+                                    <a asp-controller="Jobs" asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">
+                                            <i class="fas fa-eye"></i> View Details
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+            </div>
+        </div>
+    </section>
+}

@@ -1,0 +1,160 @@
+﻿@model FPT_JobMatch.Models.Job
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <!-- Card Layout for Job Details -->
+            <div class="card shadow-lg">
+                <div class="card-body p-5">
+                    <!-- Job Title Section -->
+                    <div class="text-center mb-4">
+                        <h1 class="display-4">@Model.Title</h1>
+                        <p class="text-muted">Posted on @Model.PostedDate.ToString("dd MMM yyyy") by <strong>@Model.Employer.CompanyName</strong></p>
+                        <hr />
+                    </div>
+
+                    <!-- Job Info Section -->
+                    <dl class="row">
+                        <!-- Job Description -->
+                        <dt class="col-sm-3 fw-bold">
+                            <i class="fas fa-align-left"></i> Job Description
+                        </dt>
+                        <dd class="col-sm-9 mb-4">
+                            <div class="job-description bg-light p-3 rounded">
+                                <p>
+                                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more or less normal distribution of letters, as opposed to using 'Content here, content here making it look like readable English.
+                                </p>
+                            </div>
+                        </dd>
+
+                        <!-- Required Knowledge, Skills, and Abilities -->
+                        <dt class="col-sm-3 fw-bold">
+                            <i class="fas fa-lightbulb"></i> Required Knowledge, Skills, and Abilities
+                        </dt>
+                        <dd class="col-sm-9 mb-4">
+                            <ul class="list-unstyled custom-list">
+                                <li><i class="fas fa-check-circle"></i> System Software Development</li>
+                                <li><i class="fas fa-check-circle"></i> Mobile Application in iOS/Android/Tizen or other platform</li>
+                                <li><i class="fas fa-check-circle"></i> Research and code libraries, APIs and frameworks</li>
+                                <li><i class="fas fa-check-circle"></i> Strong knowledge on software development life cycle</li>
+                                <li><i class="fas fa-check-circle"></i> Strong problem-solving and debugging skills</li>
+                            </ul>
+                        </dd>
+
+                        <!-- Education + Experience -->
+                        <dt class="col-sm-3 fw-bold">
+                            <i class="fas fa-graduation-cap"></i> Education + Experience
+                        </dt>
+                        <dd class="col-sm-9 mb-4">
+                            <ul class="list-unstyled custom-list">
+                                <li><i class="fas fa-check-circle"></i> 3 or more years of professional design experience</li>
+                                <li><i class="fas fa-check-circle"></i> Direct response email experience</li>
+                                <li><i class="fas fa-check-circle"></i> E-commerce website design experience</li>
+                                <li><i class="fas fa-check-circle"></i> Familiarity with mobile and web apps preferred</li>
+                                <li><i class="fas fa-check-circle"></i> Experience using InVision a plus</li>
+                            </ul>
+                        </dd>
+
+                        <!-- Job Salary -->
+                        <dt class="col-sm-3 fw-bold text-success">
+                            <i class="fas fa-dollar-sign"></i> Salary
+                        </dt>
+                        <dd class="col-sm-9 text-success fw-bold mb-4">
+                            $@Html.DisplayFor(model => model.Salary)
+                        </dd>
+
+                        <!-- Employer -->
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin, Employer"))
+                        {
+                            <dt class="col-sm-3 fw-bold">
+                                <i class="fas fa-building"></i> Employer
+                            </dt>
+                            <dd class="col-sm-9 mb-4">
+                                @Html.DisplayFor(model => model.Employer.Name)
+                            </dd>
+                        }
+                    </dl>
+
+                    <!-- Action Buttons -->
+                    <div class="mt-5 d-flex justify-content-center">
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Employer"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary btn-sm me btn-custom">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+
+                            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger btn-sm me-3 btn-custom">
+                                <i class="fas fa-trash-alt"></i> Delete
+                            </a>
+                        }
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary btn-sm me btn-custom">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+
+                            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger btn-sm me-3 btn-custom">
+                                <i class="fas fa-trash-alt"></i> Delete
+                            </a>
+                        }
+                        <a asp-action="Index" asp-route-id="@Model.Id" class="btn btn-secondary btn-sm btn-custom">
+                            <i class="fas fa-arrow-left"></i> Back to List
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Custom Styles */
+    .card {
+        border: none;
+        border-radius: 15px;
+    }
+
+    /* Job Description Styling */
+    .job-description {
+        border: 1px solid #dee2e6; /* Borders around the description */
+        border-radius: 10px;
+        background-color: #f8f9fa; /* Light background */
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    dt i.fas.fa-align-left {
+        margin-top: 10px; /* Thêm khoảng cách lùi xuống */
+    }
+
+    /* List Styling for Knowledge, Skills, Education */
+    .custom-list li {
+        margin-bottom: 10px;
+        font-size: 1.1em;
+    }
+
+    .custom-list i {
+        color: #28a745; /* Green for bullet icon */
+        margin-right: 10px;
+    }
+
+    /* Button Styling */
+    .btn-custom {
+        padding: 15px; /* Adjusted padding */
+        font-size: 14px; /* Font size */
+        width: 150px; /* Fixed width for buttons */
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        margin-right: 10px; /* Spacing between buttons */
+    }
+
+    .btn-primary.btn-custom:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-secondary.btn-custom:hover {
+        background-color: #6c757d;
+    }
+</style>

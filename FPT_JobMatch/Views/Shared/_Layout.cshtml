@@ -1,0 +1,342 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FPT_JobMatch</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Use the Poppins font family */
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+
+        }
+
+        /* Main content styling */
+        .container {
+            flex: 1; /* This makes the content area grow to fill the space */
+        }
+
+        /* Change the text color on hover */
+        .nav-link {
+            transition: color 0.3s ease;
+            font-size: 16px;
+        }
+
+            /* Hover effect for navigation links */
+            .nav-link:hover {
+                color: #ff4081;
+                font-weight: bold;
+            }
+
+        /* Custom styling for navbar background and links */
+        .navbar {
+            background-color: #fff; /* Set your desired background color */
+        }
+        .navbar-nav {
+         display: flex; 
+}
+
+        .nav-item {
+            white-space: nowrap; 
+        }
+
+        .nav-link {
+            padding: 10px 15px; 
+        }
+
+
+        /* Styling for the brand (logo text) */
+        .navbar-brand {
+            font-size: 20px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .navbar-brand span {
+             min-width: 120px; /* Điều chỉnh giá trị này tùy theo kích thước cần thiết */
+             white-space: nowrap; /* Ngăn chặn việc xuống dòng */
+        }
+
+            .navbar-brand:hover {
+                color: #ff4081;
+            }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 6px 15px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.3s;
+            width: 100%;
+        }
+
+            .btn-primary:hover {
+                background: linear-gradient(135deg, #0072ff, #00c6ff);
+            }
+
+        footer {
+            background-color: #f8f9fa; 
+            padding: 20px 0;
+        }
+
+        /* Additional footer bottom area styles */
+        .footer-bottom-area {
+            padding: 10px 0; /* Add padding for the footer bottom */
+        }
+
+        .footer-tittle a {
+            color: black; 
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+            .footer-tittle a:hover {
+                text-decoration: none; 
+                color: #ff4081; 
+                transform: scale(1.05); 
+            }
+
+        .footer-social a {
+            margin-right: 15px;
+            background: linear-gradient(135deg, #00c6ff, #0072ff); /* Gradient màu */
+            -webkit-background-clip: text; /* Cắt nền theo văn bản */
+            color: transparent; /* Làm cho văn bản trong suốt để hiện thị gradient */
+            transition: transform 0.2s ease; /* Hiệu ứng chuyển đổi cho hover */
+        }
+            .footer-social a:last-child {
+                margin-right: 0;
+            }
+    </style>
+</head>
+<body>
+
+        <header>
+            <nav class="navbar navbar-expand-xl navbar-light bg-white shadow-sm py-3">
+                <div class="container">
+                    
+                @if (!User.Identity.IsAuthenticated || User.IsInRole("User"))
+                {
+                    <a class="navbar-brand d-flex align-items-center" asp-area="" asp-controller="Home" asp-action="Index">
+                        <!-- Logo Image -->
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/FPT_logo_2010.svg/1200px-FPT_logo_2010.svg.png"
+                        alt="FPTJobMatch Logo" style="width: 66px; height: 45px; margin-right: 1px;">
+                        <!-- Brand Text -->
+                        <span class="text-primary font-weight-bold" style="font-size: 16px;">FPTJobMatch</span>
+                    </a>
+                }
+                @if (User.Identity.IsAuthenticated && User.IsInRole("Employer"))
+                {
+                    <a class="navbar-brand d-flex align-items-center" asp-area="" asp-controller="Employers" asp-action="Index">
+                        <span class="text-primary font-weight-bold" style="font-size: 16px;">Employer DashBoard</span>
+                    </a>
+                }
+                @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                {
+                    <a class="navbar-brand d-flex align-items-center" asp-area="" asp-controller="Home" asp-action="Admin">
+                        <span class="text-primary font-weight-bold" style="font-size: 16px;">Admin DashBoard</span>
+                    </a>
+                }
+
+                    <!-- Toggler for smaller screens -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <!-- Navigation Links -->
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                        @if (!User.Identity.IsAuthenticated || User.IsInRole("User"))
+                        {
+                            <li class="nav-item mr-4">
+                                <a class="nav-link text-dark font-weight-bold" asp-area="" asp-controller="Home" asp-action="Index">
+                                    Home
+                                </a>
+                            </li>
+                            <li class="nav-item mr-4">
+                                <a class="nav-link text-dark font-weight-bold" asp-area="" asp-controller="Home" asp-action="About">
+                                    About Us
+                                </a>
+                            </li>
+                            <li class="nav-item mr-4">
+                                <a class="nav-link text-dark font-weight-bold" asp-area="" asp-controller="Jobs" asp-action="Index">
+                                    All Jobs
+                                </a>
+                            </li>
+                            }
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("User"))
+                        {
+                            <li class="nav-item mr-4">
+                                <a class="nav-link text-dark font-weight-bold" asp-area="" asp-controller="Applications" asp-action="Index">
+                                    My Application
+                                </a>
+                            </li>
+                        }
+
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Employer"))
+                        {
+                            <li class="nav-item mr-4">
+                                <a class="nav-link text-dark font-weight-bold" asp-area="" asp-controller="Jobs" asp-action="Index">
+                                    Job Listings
+                                </a>
+                            </li>
+
+                            <li class="nav-item mr-4">
+                                <a class="nav-link text-dark font-weight-bold" asp-area="" asp-controller="Jobs" asp-action="Create">
+                                    Post A Job
+                                </a>
+                            </li>
+
+                            <li class="nav-item mr-4">
+                                <a class="nav-link text-dark font-weight-bold" asp-area="" asp-controller="Applications" asp-action="Index">
+                                    Applications
+                                </a>
+                            </li>
+                        }
+
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item mr-4">
+                                <a class="nav-link text-dark font-weight-bold" asp-area="" asp-controller="Employers" asp-action="Index">
+                                    Employers List
+                                </a>
+                            </li>
+                            <li class="nav-item mr-4">
+                                <a class="nav-link text-dark font-weight-bold" asp-area="" asp-controller="Jobs" asp-action="Index">
+                                    Jobs List
+                                </a>
+                            </li>
+                            <li class="nav-item mr-4">
+                                <a class="nav-link text-dark font-weight-bold" asp-area="" asp-controller="JobSeekers" asp-action="Index">
+                                    JobSeekers List
+                                </a>
+                            </li>
+                        }
+                    </ul>
+
+                        <!-- Login Partial -->
+                        <partial name="_LoginPartial" />
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    @if (!User.Identity.IsAuthenticated || User.IsInRole("User"))
+    {
+        <footer>
+            <!-- Footer Start-->
+            <div class="footer-area footer-bg footer-padding">
+                <div class="container">
+                    <div class="row d-flex justify-content-between">
+                        <!-- About Us Section -->
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-4">
+                            <div class="footer-tittle">
+                                <h4>About Us</h4>
+                                <p>Heaven fruitful doesn't cover lesser days appear creeping seasons so behold.</p>
+                            </div>
+                        </div>
+
+                        <!-- Contact Info Section -->
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5 mb-4">
+                            <div class="footer-tittle">
+                                <h4>Contact Info</h4>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <p>Address: 3, Pham Van Bach Street, Cau Giay, Hanoi City</p>
+                                    </li>
+                                    <li><a href="#">Phone: +8880 44338899</a></li>
+                                    <li><a href="#">Email: info@FPTJobMatch.com</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Important Links Section -->
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5 mb-4">
+                            <div class="footer-tittle">
+                                <h4>Important Links</h4>
+                                <ul class="list-unstyled">
+                                    <li><a href="#">View Project</a></li>
+                                    <li><a href="#">Contact Us</a></li>
+                                    <li><a href="#">Testimonial</a></li>
+                                    <li><a href="#">Properties</a></li>
+                                    <li><a href="#">Support</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Newsletter Section -->
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5 mb-4">
+                            <div class="footer-tittle">
+                                <h4>Newsletter</h4>
+                                <p>Heaven fruitful doesn't over lesser in days. Appear creeping.</p>
+                                <!-- Newsletter Form -->
+                                <div class="footer-form">
+                                    <form target="_blank" action="" novalidate>
+                                        <div class="input-group">
+                                            <input type="email" name="EMAIL" id="newsletter-form-email" placeholder="Email Address" class="form-control" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'">
+                                            <div class="input-group-append">
+                                                <button type="submit" name="submit" id="newsletter-submit" class="btn btn-primary">
+                                                    <img src="~/images/form.png" alt="">
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="mt-10 info"></div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom Area -->
+            <div class="footer-bottom-area footer-bg">
+                <div class="container">
+                    <div class="footer-border">
+                        <div class="row d-flex justify-content-between align-items-center">
+                            <div class="col-xl-10 col-lg-10">
+                                <div class="footer-copy-right">
+                                    <p>
+                                        Copyright © <script>document.write(new Date().getFullYear());</script> - Made by FPTJobMatch. All rights reserved
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-2">
+                                <div class="footer-social text-right">
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                                    <a href="#"><i class="fa-brands fa-telegram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer End-->
+        </footer>
+    }
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

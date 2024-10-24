@@ -1,0 +1,111 @@
+﻿@model FPT_JobMatch.Models.Application
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg border-light">
+        <div class="card-body">
+            <h4 class="card-title">Application Information</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-3 font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.ApplicationLatter)
+                </dt>
+                <dd class="col-sm-9">
+                    <img src="@Html.DisplayFor(model => model.ApplicationLatter)" width="500px" />
+                </dd>
+
+                <dt class="col-sm-3 font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.ApplicationDate)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.ApplicationDate)
+                </dd>
+                 @if (User.Identity.IsAuthenticated && User.IsInRole("Employer"))
+                {
+                <dt class="col-sm-3 font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.JobSeeker)
+                </dt>
+                }
+                 @if (User.Identity.IsAuthenticated && User.IsInRole("Employer"))
+                {
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.JobSeeker.Name)
+                </dd>
+                }
+
+                <dt class="col-sm-3 font-weight-bold text-secondary">
+                    @Html.DisplayNameFor(model => model.Job)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Job.Title)
+                </dd>
+            </dl>
+            <div class="mt-5 d-flex justify-content-center">
+                @if (User.Identity.IsAuthenticated && User.IsInRole("Employer"))
+                {
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary btn-sm me btn-custom">
+                        <i class="fas fa-edit"></i> Edit
+                    </a>
+                }
+                <a asp-action="Index" asp-route-id="@Model.Id" class="btn btn-secondary btn-sm btn-custom">
+                    <i class="fas fa-arrow-left"></i> Back to List
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Custom styling to improve the look */
+    .card {
+        border-radius: 15px;
+        background: linear-gradient(135deg, #ffffff, #e9ecef);
+        transition: transform 0.2s, box-shadow 0.2s;
+        border: none; /* Remove default border */
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* Increased shadow for more depth */
+        }
+
+    .card-title {
+        font-size: 1.75rem; /* Increased size for title */
+        font-weight: bold;
+        margin-bottom: 1.5rem; /* More space below title */
+        color: #343a40; /* Darker color for title */
+    }
+
+    dt {
+        font-size: 1.1rem; /* Slightly larger text for labels */
+        color: #495057; /* Gray color for dt */
+    }
+
+    dd {
+        font-size: 1.1rem; /* Slightly larger text for details */
+        margin-bottom: 1rem; /* Spacing below each detail */
+        padding-left: 15px; /* Indentation for dd */
+        background-color: #f8f9fa; /* Light background for details */
+        border-radius: 5px; /* Rounded corners */
+    }
+
+    .btn-custom {
+        padding: 15px; /* Adjusted padding */
+        font-size: 14px; /* Font size */
+        width: 150px; /* Fixed width for buttons */
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        margin-right: 10px; /* Spacing between buttons */
+    }
+
+    .btn-primary.btn-custom:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-secondary.btn-custom:hover {
+        background-color: #6c757d;
+    }
+</style>

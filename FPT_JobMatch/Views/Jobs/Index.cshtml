@@ -1,0 +1,379 @@
+﻿@model IEnumerable<FPT_JobMatch.Models.Job>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<style>
+    /* General Styles */
+    h1 {
+        font-weight: bold;
+        color: #333333;
+    }
+
+    /* Slider Area */
+    .slider-area {
+        position: relative;
+        height: 450px;
+        margin-bottom: 40px;
+        background: url('https://career.fpt-software.com/wp-content/themes/jobcareer/dist/images/banner-home.jpg') center center / cover no-repeat;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+    }
+
+        .slider-area::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+    .hero__caption h1 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #ffffff;
+        font-size: 42px;
+        font-weight: 700;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        text-align: center;
+    }
+
+    /* Search Box Styling */
+    .search-box {
+        margin-top: 20px;
+        position: relative;
+    }
+
+    .input-group {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+        .input-group .form-control {
+            padding: 20px 20px;
+            border-radius: 30px 0 0 30px;
+            border: 2px solid #007bff;
+            font-size: 16px;
+        }
+
+    /* Job Card Styles */
+    .job-card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+        transition: all 0.3s ease;
+        padding: 20px;
+    }
+
+        .job-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .job-card img {
+            max-width: 70px;
+            height: auto;
+            border-radius: 10px;
+            margin-right: 15px;
+        }
+
+        .job-card .card-body {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .job-card .card-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .job-card .card-text {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .job-card .description {
+            margin-top: 10px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .job-card .salary {
+            font-weight: bold;
+            color: #007bff;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .job-card .posted-date {
+            font-size: 12px;
+            font-style: italic;
+            color: #6c757d;
+        }
+
+    /* Action Buttons */
+    .action-buttons a {
+        font-size: 14px;
+        padding: 8px 15px;
+        border-radius: 30px;
+        transition: background-color 0.3s;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+        color: #fff;
+    }
+
+        .btn-info:hover {
+            background-color: #138496;
+            border-color: #138496;
+        }
+
+</style>
+@if (!User.Identity.IsAuthenticated || User.IsInRole("User"))
+{
+<div class="container mt-5 mb-5">
+    <h1 class="text-center mb-4">Job List</h1>
+
+    <div class="slider-area">
+        <div class="hero__caption">
+            <h1>Find Your Dream Job Today</h1>
+        </div>
+    </div>
+
+    <!-- Search Box Section -->
+    <div class="container search-box">
+        <form method="post" asp-controller="Jobs" asp-action="Search">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Job Title or keyword" aria-label="Job Title or keyword" name="keyword" required>
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">Search Job</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Job Cards Section -->
+    <div class="row mt-4">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div class="job-card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <img src="@Html.DisplayFor(modelItem => item.Image)" alt="Job Image" />
+                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
+                        </div>
+                        <p class="card-text description">@Html.DisplayFor(modelItem => item.Description)</p>
+                        <p class="card-text salary">Salary: $@Html.DisplayFor(modelItem => item.Salary)</p>
+                        <p class="card-text posted-date">Posted Date: @Html.DisplayFor(modelItem => item.PostedDate)</p>
+                        <div class="action-buttons">
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">
+                                <i class="fas fa-eye"></i> View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+}
+
+
+
+
+
+
+    <style>
+        .table {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .table thead th {
+            background-color: #007bff;
+            color: white;
+            font-size: 1.1rem;
+            border-bottom: 2px solid #0056b3;
+        }
+
+        .table tbody tr {
+            transition: background-color 0.2s;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .table td {
+            vertical-align: middle;
+            font-size: 0.95rem;
+        }
+
+        .image-cell {
+            width: 75px; /* Set a fixed width for the image column */
+        }
+
+        .image-cell img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+    .btn-custom {
+        padding: 15px; /* Adjusted padding */
+        font-size: 14px; /* Font size */
+        width: 120px; /* Fixed width for buttons */
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        margin-bottom: 20px;
+        margin-left: 10px; /* Add spacing between buttons */
+    }
+
+    .btn-primary.btn-custom:hover {
+        background-color: #0056b3;
+    }
+    </style>
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("Employer"))
+{
+<div class="container mt-4">
+    <h1 class="text-center mb-5 mt-5">Job Listings/Detail</h1>
+
+    <table class="table table-striped table-hover text-center">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Salary)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PostedDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+                <th class="">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Salary)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PostedDate)
+                    </td>
+                    <td class="image-cell">
+                        <img src="@item.Image" alt="@item.Title" class="img-fluid" />
+                    </td>
+                    <td class="action-cell"> <!-- Actions cell -->
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-custom">
+                            <i class="fas fa-edit"></i> Edit
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-custom">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+}
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <div class="container mt-4">
+        <h1 class="text-center mb-5 mt-5">Job Listings/Detail</h1>
+
+        <table class="table table-striped table-hover text-center">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Salary)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PostedDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Image)
+                    </th>
+                    <th class="">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Salary)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PostedDate)
+                        </td>
+                        <td class="image-cell">
+                            <img src="@item.Image" alt="@item.Title" class="img-fluid" />
+                        </td>
+                        <td class="action-cell">
+                            <!-- Actions cell -->
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-custom">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-custom">
+                                <i class="fas fa-trash-alt"></i> Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+
+
+@*         <div class="col text-center">
+            <a class="btn btn-secondary" asp-controller="Products" asp-action="SortByPriceAsc">Sort By Price Ascending</a>
+            <a class="btn btn-danger" asp-controller="Products" asp-action="SortByPriceDesc">Sort By Price Descending</a>
+        </div> *@
