@@ -173,3 +173,165 @@
         </div>
     </section>
 }
+
+
+
+
+
+
+
+
+<style>
+    body {
+        background-color: #f4f4f4;
+    }
+
+    .card {
+        border: none;
+        border-radius: 12px;
+        transition: transform 0.2s;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+    .card-header {
+        background-color: #007bff;
+        color: white;
+        font-size: 1.5rem;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .icon {
+        font-size: 60px;
+        color: #ffffff;
+    }
+
+    .card-body {
+        padding: 2rem;
+    }
+
+    .card-title {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    .list-unstyled li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+        .list-unstyled li:last-child {
+            border-bottom: none;
+        }
+
+    .btn {
+        transition: background-color 0.2s;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    h1 {
+        margin-bottom: 2rem;
+    }
+
+    .space {
+        transform: translateY(66px);
+    }
+</style>
+
+@* Admin DashBoard Page *@
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <div class="container mt-5">
+        <div class="space">
+            <div class="row">
+                <!-- Card 1: Total Users -->
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            <span>Total Users</span>
+                            <i class="fas fa-users icon"></i>
+                        </div>
+                        <div class="card-body text-center">
+                            <h2 class="card-title">150</h2>
+                            <p class="card-text">Total number of users registered on the platform.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Active Jobs -->
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            <span>Active Jobs</span>
+                            <i class="fas fa-briefcase icon"></i>
+                        </div>
+                        <div class="card-body text-center">
+                            <h2 class="card-title">50</h2>
+                            <p class="card-text">Total number of active job postings.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Applications -->
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            <span>Applications</span>
+                            <i class="fas fa-file-alt icon"></i>
+                        </div>
+                        <div class="card-body text-center">
+                            <h2 class="card-title">75</h2>
+                            <p class="card-text">Total number of job applications received.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Card 4: Notifications -->
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            <span>Notifications</span>
+                            <i class="fas fa-bell icon"></i>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li>New user registered: <strong>John Doe</strong></li>
+                                <li>New job posting: <strong>Software Engineer</strong></li>
+                                <li>New application: <strong>Jane Smith</strong> for Data Analyst</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5: Recent Activity -->
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            <span>Recent Activity</span>
+                            <i class="fas fa-history icon"></i>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li>John Doe applied for <strong>Marketing Specialist</strong></li>
+                                <li>Mary Jane updated her profile</li>
+                                <li>New job posted by <strong>XYZ Company</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

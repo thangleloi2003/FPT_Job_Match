@@ -193,25 +193,17 @@ namespace FPT_JobMatch.Controllers
             var jobs = _context.Job.Where(p => p.Title.Contains(keyword)).ToList();
             return View("Index", jobs);
         }
-
-
-
-
-
-
-
-
-
-        //public IActionResult SortByAsc()
-        //{
-        //    var jobs = _context.Job.OrderBy(p => p.Title).ToList();
-        //    return View("Index", jobs);
-        //}
-
-        //public IActionResult SortByDesc()
-        //{
-        //    var jobs = _context.Job.OrderByDescending(p => p.Title).ToList();
-        //    return View("Index", jobs);
-        //}
     }
 }
+
+//public IActionResult SortByAsc()
+//{
+//    var jobs = _context.Job.OrderBy(p => p.Title).ToList();
+//    return View("Index", jobs);
+//}
+
+//public IActionResult SortByDesc()
+//{
+//    var jobs = _context.Job.OrderByDescending(p => p.Title).ToList();
+//    return View("Index", jobs);
+//}
