@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\ADMIN\\Desktop\\source\\repos\\FPT_JobMatch\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{3BF2984D-BC49-4F8A-BCD7-05B10E54E87C}|FPT_JobMatch\\FPT_JobMatch.csproj|c:\\users\\admin\\desktop\\source\\repos\\fpt_jobmatch\\fpt_jobmatch\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3BF2984D-BC49-4F8A-BCD7-05B10E54E87C}|FPT_JobMatch\\FPT_JobMatch.csproj|solutionrelative:fpt_jobmatch\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3BF2984D-BC49-4F8A-BCD7-05B10E54E87C}|FPT_JobMatch\\FPT_JobMatch.csproj|c:\\users\\admin\\desktop\\source\\repos\\fpt_jobmatch\\fpt_jobmatch\\controllers\\applicationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3BF2984D-BC49-4F8A-BCD7-05B10E54E87C}|FPT_JobMatch\\FPT_JobMatch.csproj|solutionrelative:fpt_jobmatch\\controllers\\applicationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -48,10 +52,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{3BF2984D-BC49-4F8A-BCD7-05B10E54E87C}|FPT_JobMatch\\FPT_JobMatch.csproj|c:\\users\\admin\\desktop\\source\\repos\\fpt_jobmatch\\fpt_jobmatch\\areas\\identity\\pages\\account\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3BF2984D-BC49-4F8A-BCD7-05B10E54E87C}|FPT_JobMatch\\FPT_JobMatch.csproj|solutionrelative:fpt_jobmatch\\areas\\identity\\pages\\account\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3BF2984D-BC49-4F8A-BCD7-05B10E54E87C}|FPT_JobMatch\\FPT_JobMatch.csproj|c:\\users\\admin\\desktop\\source\\repos\\fpt_jobmatch\\fpt_jobmatch\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3BF2984D-BC49-4F8A-BCD7-05B10E54E87C}|FPT_JobMatch\\FPT_JobMatch.csproj|solutionrelative:fpt_jobmatch\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3BF2984D-BC49-4F8A-BCD7-05B10E54E87C}|FPT_JobMatch\\FPT_JobMatch.csproj|c:\\users\\admin\\desktop\\source\\repos\\fpt_jobmatch\\fpt_jobmatch\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -117,23 +117,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 177,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "EmployersController.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\source\\repos\\FPT_JobMatch\\FPT_JobMatch\\Controllers\\EmployersController.cs",
-              "RelativeDocumentMoniker": "FPT_JobMatch\\Controllers\\EmployersController.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\source\\repos\\FPT_JobMatch\\FPT_JobMatch\\Controllers\\EmployersController.cs",
-              "RelativeToolTip": "FPT_JobMatch\\Controllers\\EmployersController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAG0AAAAYAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-25T09:12:48.889Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ApplicationsController.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\source\\repos\\FPT_JobMatch\\FPT_JobMatch\\Controllers\\ApplicationsController.cs",
               "RelativeDocumentMoniker": "FPT_JobMatch\\Controllers\\ApplicationsController.cs",
@@ -146,7 +134,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\source\\repos\\FPT_JobMatch\\FPT_JobMatch\\Views\\Applications\\Create.cshtml",
               "RelativeDocumentMoniker": "FPT_JobMatch\\Views\\Applications\\Create.cshtml",
@@ -158,7 +146,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "JobsController.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\source\\repos\\FPT_JobMatch\\FPT_JobMatch\\Controllers\\JobsController.cs",
               "RelativeDocumentMoniker": "FPT_JobMatch\\Controllers\\JobsController.cs",
@@ -170,7 +158,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\source\\repos\\FPT_JobMatch\\FPT_JobMatch\\Views\\Jobs\\Create.cshtml",
               "RelativeDocumentMoniker": "FPT_JobMatch\\Views\\Jobs\\Create.cshtml",
@@ -182,7 +170,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\source\\repos\\FPT_JobMatch\\FPT_JobMatch\\Views\\Jobs\\Edit.cshtml",
               "RelativeDocumentMoniker": "FPT_JobMatch\\Views\\Jobs\\Edit.cshtml",
@@ -194,7 +182,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\source\\repos\\FPT_JobMatch\\FPT_JobMatch\\Views\\Applications\\Edit.cshtml",
               "RelativeDocumentMoniker": "FPT_JobMatch\\Views\\Applications\\Edit.cshtml",
@@ -206,7 +194,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\source\\repos\\FPT_JobMatch\\FPT_JobMatch\\Views\\Employers\\Create.cshtml",
               "RelativeDocumentMoniker": "FPT_JobMatch\\Views\\Employers\\Create.cshtml",
@@ -218,7 +206,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\source\\repos\\FPT_JobMatch\\FPT_JobMatch\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "FPT_JobMatch\\Controllers\\HomeController.cs",
@@ -230,7 +218,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\source\\repos\\FPT_JobMatch\\FPT_JobMatch\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "FPT_JobMatch\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\source\\repos\\FPT_JobMatch\\FPT_JobMatch\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeToolTip": "FPT_JobMatch\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAACIAAABYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-25T08:54:03.847Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "EmployersController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\source\\repos\\FPT_JobMatch\\FPT_JobMatch\\Controllers\\EmployersController.cs",
+              "RelativeDocumentMoniker": "FPT_JobMatch\\Controllers\\EmployersController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\source\\repos\\FPT_JobMatch\\FPT_JobMatch\\Controllers\\EmployersController.cs",
+              "RelativeToolTip": "FPT_JobMatch\\Controllers\\EmployersController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAG0AAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-25T09:12:48.889Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\source\\repos\\FPT_JobMatch\\FPT_JobMatch\\Views\\Applications\\Details.cshtml",
               "RelativeDocumentMoniker": "FPT_JobMatch\\Views\\Applications\\Details.cshtml",
@@ -254,7 +267,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Microsoft.NET.EolTargetFrameworks.targets",
               "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.EolTargetFrameworks.targets",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\8.0.202\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.EolTargetFrameworks.targets",
@@ -278,7 +291,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Register.cshtml.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\source\\repos\\FPT_JobMatch\\FPT_JobMatch\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
               "RelativeDocumentMoniker": "FPT_JobMatch\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
@@ -299,18 +312,6 @@
               "ViewState": "AQIAACMAAAAAAAAAAAAuwFkAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-25T08:53:18.34Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Register.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\source\\repos\\FPT_JobMatch\\FPT_JobMatch\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
-              "RelativeDocumentMoniker": "FPT_JobMatch\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\source\\repos\\FPT_JobMatch\\FPT_JobMatch\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
-              "RelativeToolTip": "FPT_JobMatch\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAACMAAAAzAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-25T08:54:03.847Z"
             },
             {
               "$type": "Document",
