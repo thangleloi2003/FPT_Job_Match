@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -46,12 +47,18 @@ namespace FPT_JobMatch.Controllers
         }
 
         // GET: Applications/Create
-        [Authorize(Roles = "Admin, Employer")]
+        [Authorize(Roles = "User")]
         public IActionResult Create()
         {
             ViewData["JobId"] = new SelectList(_context.Job, "Id", "Title");
             ViewData["JobSeekerId"] = new SelectList(_context.JobSeeker, "Id", "Name");
-            return View();
+
+            var application = new Application
+            {
+                ApplicationDate = DateTime.Now // Thời gian hiện tại
+            };
+
+            return View(application);
         }
 
         // POST: Applications/Create
@@ -86,6 +93,7 @@ namespace FPT_JobMatch.Controllers
             {
                 return NotFound();
             }
+            application.ApplicationDate = DateTime.Now;
             ViewData["JobId"] = new SelectList(_context.Job, "Id", "Title", application.JobId);
             ViewData["JobSeekerId"] = new SelectList(_context.JobSeeker, "Id", "Name", application.JobSeekerId);
             return View(application);

@@ -51,8 +51,14 @@ namespace FPT_JobMatch.Controllers
         [Authorize(Roles = "Admin, Employer")]
         public IActionResult Create()
         {
-            ViewData["EmployerId"] = new SelectList(_context.Employer, "Id", "Name");
-            return View();
+            ViewData["JobId"] = new SelectList(_context.Job, "Id", "Title");
+            ViewData["JobSeekerId"] = new SelectList(_context.JobSeeker, "Id", "Name");
+
+            var job = new Job
+            {
+                PostedDate = DateTime.Now // Thiết lập giá trị mặc định là thời gian hiện tại
+            };
+            return View(job);
         }
 
         // POST: Jobs/Create
@@ -104,6 +110,8 @@ namespace FPT_JobMatch.Controllers
             {
                 return NotFound();
             }
+
+            job.PostedDate = DateTime.Now;
             ViewData["EmployerId"] = new SelectList(_context.Employer, "Id", "Name", job.EmployerId);
             return View(job);
         }
@@ -139,6 +147,7 @@ namespace FPT_JobMatch.Controllers
                     if (existingJob != null)
                     {
                         job.Image = existingJob.Image;
+
                     }
                 }
 
